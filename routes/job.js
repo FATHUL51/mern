@@ -6,6 +6,33 @@ const authMiddleware = require("../middleware/auth");
 dotenv.config();
 
 router.get("/", async (req, res) => {
+  const { limit, offset, salary, name } = req.query;
+  // const jobs = await Job.find()({
+  //   salary: { $gte: 200, $lte: salary + 8000 }.skip(offset).limit(limit),
+  // });
+
+  // const jobs = await Job.find({ salary }).skip(offset).limit(limit);
+
+  // const jobs = await Job.find({ companyName: name, salary })
+  //   .skip(offset)
+  //   .limit(limit);
+
+  // const jobs = await Job.find({
+  //   companyName: { $regex: name, $options: "i" },
+  // }).limit(limit);
+
+  //const jobs = await Job.find().limit(limit).skip(offset);
+
+  // const jobs = await Job.find({
+  //   $or: [
+  //     { companyName: { $regex: name, $options: "i" } },
+  //     { jobPosition: { $regex: name, $options: "i" } },
+  //   ],
+  //   salary: { $gte: 200, $lte: salary + 8000 },
+  // })
+  //   .limit(limit)
+  //   .skip(offset);
+
   const jobs = await Job.find();
   res.status(200).json(jobs);
 });
